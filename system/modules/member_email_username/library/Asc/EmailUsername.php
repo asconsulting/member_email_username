@@ -17,6 +17,7 @@ class EmailUsername extends \Frontend
 	
 	public function setUsername($intId, $arrData, $objModule)
 	{
+		die(print_r($arrData, TRUE));
 		$objUsername = \Database::getInstance()->prepare('SELECT id FROM tl_member WHERE username = ? AND id !=?')->execute($arrData['email'], $intId);
 		
 		if ($objModule->reg_emailUsername && $objUsername->numRows) {
