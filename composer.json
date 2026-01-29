@@ -12,26 +12,19 @@
         }
     ],
     "require":{
-        "php": ">=7.3 || ^8.0",
-        "contao/core-bundle": ">=4.9",
-        "contao-community-alliance/composer-plugin": "~2.4 || ~3.0"
+        "php": ">=8.2",
+        "contao/core-bundle": "^5.3"
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0"
     },
-    "autoload": {
+	"autoload": {
         "psr-4": {
-            "Asc\\": [
-                "system/modules/member_email_username/library/Asc"
-            ]
+            "EmailUsername\\": "src/"
         }
     },
-    "extra": {
-        "contao": {
-            "sources": {
-                "system/modules/member_email_username": "system/modules/member_email_username"
-            }
-        }
-    },
+	"extra": {
+		"contao-manager-plugin": "EmailUsername\\ContaoManager\\Plugin"
+	},
     "minimum-stability": "dev"
 }
