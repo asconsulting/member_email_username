@@ -20,7 +20,7 @@ use Contao\Module;
 #[AsHook('createNewUser')]
 class CreateNewUserListener
 {
-    public function __invoke(int $userId, array $userData, Module $module) void
+    public function __invoke(int $userId, array $userData, Module $module): void
     {
 		$objUsername = Database::getInstance()->prepare('SELECT id FROM tl_member WHERE username = ? AND id !=?')->execute($userData['email'], $userId);
 		
