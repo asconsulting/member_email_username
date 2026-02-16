@@ -20,14 +20,14 @@ use Contao\Module;
 #[AsHook('createNewUser')]
 class CreateNewUserListener
 {
-    public function __invoke(int $userId, array $userData, Module $module): void
+    public function __invoke(int $intId, array $arrData, Module $objModule): void
     {
-		$objUsername = Database::getInstance()->prepare('SELECT id FROM tl_member WHERE username = ? AND id !=?')->execute($userData['email'], $userId);
+		$objUsername = Database::getInstance()->prepare('SELECT id FROM tl_member WHERE username = ? AND id !=?')->execute($arrData['email'], $intId);
 		
 		if ($objModule->reg_emailUsername && $objUsername->numRows == 0) {
-			$objMember = MemberModel::findByIdOrAlias($userId);
+			$objMember = MemberModel::findByIdOrAlias($intId);
 			// Update the account
-			$objMember->username = $userData['email'];
+			$objMember->username = $arrData['email'];
 			$objMember->save();
 		}
     }
